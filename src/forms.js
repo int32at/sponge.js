@@ -2,9 +2,23 @@
 	sponge = window.sponge || {};
 
 	sponge.forms = function() {
+		var self = this;
+
+		var findField = function(name) {
+			return { "field" : "test" };
+		};
+
+		var findAllFields = function() {
+
+		};
+
 		return {
-			init: function() {
-				
+			field : function(name) {
+				return findField(name);
+			},
+
+			fields : function() {
+				return findAllFields();
 			}
 		};
 	}();

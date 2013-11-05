@@ -27,9 +27,10 @@ module.exports = function(grunt) {
 				options: {
 					specs: 'spec/*Spec.js',	
 					keepRunner: true,
+					vendor: 'lib/*.js',
 					'--web-security' : false,
 					'--local-to-remote-url-access' : true,
-					'--ignore-ssl-errors' : true
+					'--ignore-ssl-errors' : true,
 				}
 			},
 
