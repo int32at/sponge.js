@@ -201,6 +201,44 @@
                 }
 			};
 
+			var remove = function(value) {
+				switch (self.type) {
+                    case "SelectResult":
+                        var appendix = "";
+                        if (typeof value !== "undefined") {
+                            appendix = ":contains('" + value + "')";
+                        }
+                        var options = this.row().find("select[title='" + self.name + " selected values'] option" + appendix);
+                        var possible = this.row().find("select[title='" + self.name + " possible values']");
+
+                        options.each(function (i, o) {
+                            o = $(o);
+                            possible.append(o.clone());
+                            o.remove();
+                        });
+                        break;
+
+                    case "upLevelDiv":
+                        var newItems = [];
+
+                        $(self.data.text().toLowerCase().split(";")).each(function (i, o) {
+                            if (typeof value !== "undefined" && o.trim() !== value.toLowerCase()) {
+                                newItems.push(o.trim());
+                            }
+                        });
+
+
+                        self.data.text(newItems.join(";"));
+
+                        var check = this.row().find("img[Title='Check Names']:first");
+                        check.click();
+
+                        break;
+                    default:
+                        self.data.val(value);
+                }
+			};
+
 			var disable = function() {
 				self.data.attr("disabled", "disabled");
 			};
