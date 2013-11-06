@@ -39,6 +39,7 @@ module.exports = function(grunt) {
 				options: {
 					specs: 'spec/*Spec.js',
 					vendor: 'lib/*.js',
+					keepRunner: true,
 					template: require('grunt-template-jasmine-istanbul'),
 					templateOptions: {
 						coverage: 'coverage/coverage.json',
