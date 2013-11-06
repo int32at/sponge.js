@@ -203,13 +203,14 @@
 
 			var remove = function(value) {
 				switch (self.type) {
+
                     case "SelectResult":
                         var appendix = "";
                         if (typeof value !== "undefined") {
                             appendix = ":contains('" + value + "')";
                         }
-                        var options = this.row().find("select[title='" + self.name + " selected values'] option" + appendix);
-                        var possible = this.row().find("select[title='" + self.name + " possible values']");
+                        var options = self.row.find("select[title='" + self.name + " selected values'] option" + appendix);
+                        var possible = self.row.find("select[title='" + self.name + " possible values']");
 
                         options.each(function (i, o) {
                             o = $(o);
@@ -230,8 +231,11 @@
 
                         self.data.text(newItems.join(";"));
 
-                        var check = this.row().find("img[Title='Check Names']:first");
-                        check.click();
+                        var check = self.row.find("img[Title='Check Names']:first");
+
+                        try {
+                        	check.click();
+                        } catch(err) {}
 
                         break;
                     default:
@@ -261,6 +265,7 @@
 				row : self.row,
 				get : get,
 				set : set,
+				remove: remove,
 				disable : disable,
 				enable : enable,
 				hide : hide,
