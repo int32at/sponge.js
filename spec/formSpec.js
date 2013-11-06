@@ -4,12 +4,15 @@ describe('form.js Tests', function() {
 		expect(sponge.forms).not.toBeUndefined();
 	});
 
+	beforeEach(function() {
+		loadFixtures('allFields.html');
+	});
+
 	describe('Simple Text Box', function() {
 
 		var textField;
 
 		beforeEach(function() {
-			loadFixtures('simpleTextField.html');
 			textField = sponge.forms.fields("Title");
 		});
 
@@ -38,7 +41,7 @@ describe('form.js Tests', function() {
 			var value = "TEST";
 			textField.set(value);
 			expect(textField.get()).toBe(value);
-		})
+		});
 	});
 
 	describe('People Picker', function() {
@@ -46,13 +49,12 @@ describe('form.js Tests', function() {
 		var peoplePicker;
 
 		beforeEach(function() {
-			loadFixtures('peoplePicker.html');
-			peoplePicker = sponge.forms.fields("Owner");
+			peoplePicker = sponge.forms.fields("Person");
 		});
 
-		it('should find the people picker with id = Owner', function() {
+		it('should find the people picker with id = Person', function() {
 			expect(peoplePicker).not.toBeUndefined();
-			expect(peoplePicker.name).toBe("Owner");
+			expect(peoplePicker.name).toBe("Person");
 			expect(peoplePicker.data.length).toBe(1);
 			expect(peoplePicker.type).toBe("upLevelDiv");
 		});
