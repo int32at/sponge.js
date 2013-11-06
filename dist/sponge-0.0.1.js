@@ -34,20 +34,29 @@
 
             //people picker
             if (f.length === 0) {
-                var row = $("nobr:contains('" + name + "')").closest("tr");
+                var row = $("nobr").filter(function () {
+                        return $(this).contents().eq(0).text() === name;
+                    }).closest("tr");
                 f = row.find("div[name='upLevelDiv']");
             }
 
             //multi checkboxes
             if (f.length === 0) {
-                var row = $("nobr:contains('" + name + "')").closest("tr");
+                var row = $("nobr").filter(function () {
+                        return $(this).contents().eq(0).text() === name;
+                    }).closest("tr");
                 f = row.find("span .ms-RadioText");
-                type = "MultiCheckBox";
+
+                if(f.length !== 0) {
+                	type = "MultiCheckBox";
+            	}
             }
 
             //multiline textbox
             if (f.length === 0) {
-                var row = $("nobr:contains('" + name + "')").closest("tr");
+                var row = $("nobr").filter(function () {
+                        return $(this).contents().eq(0).text() === name;
+                    }).closest("tr");
                 f = row.find("div[role=textbox]");
             }
 

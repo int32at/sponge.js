@@ -7,6 +7,8 @@ describe('form.js Tests', function() {
 		fields.push(sponge.forms.fields("Title"));
 		fields.push(sponge.forms.fields("Person"));
 		fields.push(sponge.forms.fields("ChoiceDropdown"));
+		fields.push(sponge.forms.fields("ChoiceRadio"));
+		fields.push(sponge.forms.fields("ChoiceMulti"));
 		fields.push(sponge.forms.fields("Number"));
 		fields.push(sponge.forms.fields("Currency"));
 		fields.push(sponge.forms.fields("Boolean"));
@@ -14,6 +16,7 @@ describe('form.js Tests', function() {
 		fields.push(sponge.forms.fields("HyperLink"));
 		fields.push(sponge.forms.fields("Lookup"));
 		fields.push(sponge.forms.fields("Multi"));
+		fields.push(sponge.forms.fields("MultiLookup"));
 	});
 
 	it('should define all fields', function() {
@@ -55,7 +58,7 @@ describe('form.js Tests', function() {
 
 	it('should be possible to set the value of the field', function() {
 		runInLoop(function(field) {
-			field.set("test");
+			field.set("Enter Choice #1");
 
 			var value = field.get();
 			expect(value).not.toBeUndefined();
