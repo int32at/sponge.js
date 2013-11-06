@@ -24,7 +24,6 @@ describe('form.js Tests', function() {
 			expect(field).toBeDefined();
 			expect(field.name).toBeDefined();
 			expect(field.data.length).not.toBe(0);
-			expect(field.type).not.toBeUndefined();
 		});
 	});
 
@@ -39,6 +38,13 @@ describe('form.js Tests', function() {
 		runInLoop(function(field) {
 			field.show();
 			expect(field.row.css("display")).not.toBe("none");
+		});
+	});
+
+	it('should be possible to enable the filed', function() {
+		runInLoop(function(field) {
+			field.enable();
+			expect(field.data.attr("disabled")).toBeUndefined();
 		});
 	});
 

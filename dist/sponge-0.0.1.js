@@ -19,7 +19,7 @@
 		var self = this;
 
 		var findField = function(name) {
-			var type = undefined;
+			var type;
 
 			var f = $("input[Title='" + name + "']");
 
@@ -219,6 +219,10 @@
 				self.data.attr("disabled", "disabled");
 			};
 
+			var enable = function() {
+				self.data.removeAttr("disabled");
+			}
+
 			var hide = function() {
 				self.row.hide();
 			};
@@ -230,11 +234,11 @@
 			return {
 				name : self.name,
 				data : self.data,
-				type : self.type,
 				row : self.row,
 				get : get,
 				set : set,
 				disable : disable,
+				enable : enable,
 				hide : hide,
 				show : show
 			};
