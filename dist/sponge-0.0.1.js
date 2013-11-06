@@ -42,6 +42,7 @@
             if (f.length === 0) {
                 var row = $("nobr:contains('" + name + "')").closest("tr");
                 f = row.find("span .ms-RadioText");
+                type = "MultiCheckBox";
             }
 
             //multiline textbox
@@ -61,7 +62,7 @@
 			var self = this;
 			self.data = data;
 			self.name = name;
-			self.type = function(type) {
+			self.type = function() {
 
 				if(type !== undefined)
 					return type;
@@ -125,8 +126,7 @@
                         break;
 
                     case "BooleanField":
-                        var checked = self.data.attr("checked");
-                        value = typeof checked != "undefined";
+                        value = self.data.attr("checked"); 
                         break;
 
                     case "DateTimeFieldDate":
@@ -154,10 +154,6 @@
 
                     default:
                         value = self.data.val();
-                }
-
-                if(value !== "undefined") {
-                	value = value.trim();
                 }
 
                 return value;
