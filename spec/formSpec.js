@@ -71,6 +71,21 @@ describe('form.js Tests', function() {
 		});
 	});
 
+	it('should be possible to remove values from MultiLookup and Person', function() {
+		runInLoop(function(field) {
+			if(field.name === "MultiLookup") {
+				field.set("My");
+				field.remove();
+				expect(field.get().length).toBe(0);
+			}
+
+			if(field.name === "Person") {
+				field.remove();
+				expect(field.get()).toBe("");
+			}
+		});
+	});
+
 	function runInLoop(callback) {
 		for (var i = fields.length - 1; i >= 0; i--) {
 			var field = fields[i];
