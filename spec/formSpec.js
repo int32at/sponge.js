@@ -30,19 +30,27 @@ describe('form.js Tests', function() {
 			expect(actual).toBeUndefined();
 		});
 
-		it('should add the disabled attribute when the disabled() method is called', function() {
-
-			textField.disable();
-			var disabled = textField.data.attr("disabled");
-			expect(disabled).toBe("disabled");
-		});
-
 		it('should be possible to set the value to "TEST" and get the value again', function() {
 			expect(textField.get()).toBe("MyTitle");
-			
+
 			var value = "Test1";
 			textField.set(value);
 			expect(textField.get()).toBe(value);
+		});
+
+		it('should be possible to disable the control', function() {
+			textField.disable();
+			expect(textField.data.attr("disabled")).toBe("disabled");
+		});
+
+		it('should be possible to hide the control', function() {
+			textField.hide();
+			expect(textField.row.css("display")).toBe("none");
+		});
+
+		it('should be possible to show the control', function() {
+			textField.show();
+			expect(textField.row.css("display")).not.toBe("none");
 		});
 	});
 
@@ -67,9 +75,65 @@ describe('form.js Tests', function() {
 		});
 
 		it('should be possible to get and set the value', function() {
-			var value = "TEST";
-			peoplePicker.set(value);
+			var value = "DEV\\developer;".trim();
 			expect(peoplePicker.get()).toBe(value);
+			peoplePicker.set(value);
+			
+			//this will append the value to the picker (so value x2)
+			//check if its been added
+			expect(peoplePicker.get()).not.toBe(value);
+		});
+
+		it('should be possible to disable the control', function() {
+			peoplePicker.disable();
+			expect(peoplePicker.data.attr("disabled")).toBe("disabled");
+		});
+
+		it('should be possible to hide the control', function() {
+			peoplePicker.hide();
+			expect(peoplePicker.row.css("display")).toBe("none");
+		});
+
+		it('should be possible to show the control', function() {
+			peoplePicker.show();
+			expect(peoplePicker.row.css("display")).not.toBe("none");
 		});
 	});	
+
+	describe('Choice - Dropdown', function() {
+		var field;
+
+		beforeEach(function() {
+			field = sponge.forms.fields("ChoiceDropdown");
+		});
+
+		it('should find the control with id = ChoiceDropdown', function() {
+			expect(field).not.toBeUndefined();
+			expect(field.name).toBe("ChoiceDropdown");
+			expect(field.data.length).toBe(1);
+			expect(field.type).toBe("DropDownChoice");
+		});
+
+		it('should be possible to get and set the value of the field', function() {
+			var value  = "Enter Choice #3";
+			field.set(value);
+			expect(field.get()).not.toBeUndefined();
+			expect(field.get()).toBe(value);
+		});
+
+		it('should be possible to disable the control', function() {
+			field.disable();
+			expect(field.data.attr("disabled")).toBe("disabled");
+		});
+
+		it('should be possible to hide the control', function() {
+			field.hide();
+			expect(field.row.css("display")).toBe("none");
+		});
+
+		it('should be possible to show the control', function() {
+			field.show();
+			expect(field.row.css("display")).not.toBe("none");
+		});
+	});
 });
