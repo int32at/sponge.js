@@ -5,7 +5,7 @@ describe('form.js Tests', function() {
 	});
 
 	beforeEach(function() {
-		loadFixtures('allFields.html');
+		loadFixtures('allFieldsDefaultValues.html');
 	});
 
 	describe('Simple Text Box', function() {
@@ -38,7 +38,9 @@ describe('form.js Tests', function() {
 		});
 
 		it('should be possible to set the value to "TEST" and get the value again', function() {
-			var value = "TEST";
+			expect(textField.get()).toBe("MyTitle");
+			
+			var value = "Test1";
 			textField.set(value);
 			expect(textField.get()).toBe(value);
 		});
