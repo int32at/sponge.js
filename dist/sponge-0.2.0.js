@@ -14,7 +14,7 @@
 
   window.sponge.common = (function() {
     return {
-      spVersion: typeof SP !== "undefined" && SP !== null ? "14" : "12"
+      spVersion: typeof SP !== "undefined" && SP !== null ? parseInt(SP.ClientSchemaVersions.currentVersion) : "12"
     };
   })();
 

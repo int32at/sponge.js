@@ -3,7 +3,7 @@
     it('should be possible to use the sponge.common object', function() {
       return expect(sponge.common).not.toBeUndefined();
     });
-    return it('should be possible to retreive the sp version (12 if SP namespace does not exist)', function() {
+    return it('should be possible to retreive the sp version and it should be equal 12 (SP 2010)', function() {
       return expect(sponge.common.spVersion).toBe("12");
     });
   });
